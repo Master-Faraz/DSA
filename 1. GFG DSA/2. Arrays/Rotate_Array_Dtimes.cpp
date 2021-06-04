@@ -21,11 +21,11 @@ void rotate(int arr[], int d, int size)
         index++;
     }
 
-    for (int i = 0; i < size; i++)
-        cout << arr[i] << endl;
+    // for (int i = 0; i < size; i++)
+    //     cout << arr[i] << endl;
 
-    for (int i = 0; i < n; i++)
-        cout << temp[i] << endl;
+    // for (int i = 0; i < n; i++)
+    //     cout << temp[i] << endl;
     cout<<n<<endl;
 
     delete temp;
