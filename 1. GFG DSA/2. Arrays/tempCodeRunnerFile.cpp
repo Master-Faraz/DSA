@@ -1,2 +1,2 @@
-; i++)
-    //     cout << temp[i] << endl;
+a[i] !=1)
+        //     count=0;
