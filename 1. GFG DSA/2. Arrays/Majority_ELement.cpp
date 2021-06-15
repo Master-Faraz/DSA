@@ -6,11 +6,11 @@ int Moors_Voting_Algorithm(int a[], int size);
 
 int main()
 {
-    int a[] = {1,1,2,3,1};
+    int a[] = {};
     int size = sizeof(a) / sizeof(int);
 
     cout << Moors_Voting_Algorithm(a, size) << endl;
-    ;
+    
     return 0;
 }
 
