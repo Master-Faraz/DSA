@@ -2,16 +2,19 @@
 using namespace std;
 
 int fact(int n);
+int fact_tail_recurssion(int n, int k);
 int fibo(int n);
 
 int main()
 {
-    int n = 10;
+    // int n = 10;
     // cout << fact(5) << endl;
-    for (int i = 1; i <= n; i++)
-    {
-        cout << fibo(i) << "   ";
-    }
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     cout << fibo(i) << "   ";
+    // }
+
+    cout<<fact_tail_recurssion(5,1)<<endl;
 
     return 0;
 }
@@ -22,6 +25,14 @@ int fact(int n)
         return 1;
     else
         return (n * fact(n - 1));
+}
+
+int fact_tail_recurssion(int n, int k)
+{
+    if (n == 0)
+        return k;
+    else
+        return fact_tail_recurssion(n - 1, n * k);
 }
 
 int fibo(int n)
