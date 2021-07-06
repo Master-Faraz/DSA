@@ -8,6 +8,8 @@ int Hash(int key)
     return (key % Size);
 }
 
+
+
 int probe(int h[], int key)
 {
     int index = Hash(key);
