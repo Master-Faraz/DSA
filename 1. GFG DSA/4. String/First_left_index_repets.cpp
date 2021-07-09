@@ -12,6 +12,7 @@ void repeats(string s)
         {
             cout << s[i] << endl;
             break;
+            
         }
     }
 }
