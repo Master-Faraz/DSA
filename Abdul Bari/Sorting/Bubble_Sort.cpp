@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-void Bubble_Sort(int a[], int size) //.                      O( n^2 )
+void Insertion_Sort(int a[], int size) //.                      O( n^2 )
 {
     int n = size - 1  , count =0;
 
@@ -30,7 +30,7 @@ int main()
 {
     // int arr[] = {8, 5, 7, 3, 2};
     int arr[] = {2,3,5,7,8};
-    Bubble_Sort(arr, 5);
+    Insertion_Sort(arr, 5);
 
 
 
