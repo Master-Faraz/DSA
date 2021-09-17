@@ -29,8 +29,8 @@ int main()
 
     // linear_search(arr , 3 ,5);
     // linear_search(arr , 31 ,5);
-    // Binary_Search(arr , 4 ,5);
-    Binary_Search(arr , 45,5);
+    Binary_Search(arr, 5, 5);
+    Binary_Search(arr, 45, 5);
 }
 
 int get_index(int arr[], int key, int size)
@@ -121,28 +121,27 @@ int Binary_Search(int arr[], int key, int length)
 {
     int l = length - 1;
     int low = arr[0];
-    int  high = arr[l];
-    int mid = (low + high) / 2;
+    int high = arr[l];
+    int mid;
 
-    if (arr[mid] > key)
+    while (low < high)
     {
-        high = mid - 1;
         mid = (low + high) / 2;
-    }
-    else if (arr[mid] == key)
-    {
-        printf("Key is found at index %d\n", mid);
-        // return 0;
-    }
-    else if (arr[mid] < key)
-    {
-        low = mid + 1;
-        mid = (low + high) / 2;
+        if (arr[mid] > key)
+        {
+            high = mid - 1;
+        }
+        else if (arr[mid] == key)
+        {
+            printf("Key is found at index %d\n", mid);
+            return mid;
+        }
+        else if (arr[mid] < key)
+        {
+            low = mid + 1;
+        }
     }
 
-
-    if(low>high)
-    {
-        printf("Key is not found \n");
-    }
+    printf("Key is not found \n");
+    return -1;
 }
