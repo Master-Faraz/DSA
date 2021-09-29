@@ -20,6 +20,7 @@ int *Union(int arr_1[], int arr_2[], int len_1, int len_2);
 
 int *merge_arr; // .                                Pointer which stores merged array
 int *ptr;
+int size;
 
 int main()
 {
@@ -47,10 +48,11 @@ int main()
     // merge_sorted(arr_1, arr_2, 4, 4);
     // printing(merge_arr, 8);
     Union(arr_1, arr_2, 4, 4);
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < size; i++)
     {
         printf("%d\n", ptr[i]);
     }
+    printf("Size is %d\n", size);
 }
 
 int get_index(int arr[], int key, int size)
@@ -193,7 +195,7 @@ void insert_Sorted(int *arr, int key, int elements)
 
 int merge_sorted(int arr_1[], int arr_2[], int len_1, int len_2)
 {
-    int size = len_1 + len_2 - 1;
+    size = len_1 + len_2 - 1;
     merge_arr = (int *)malloc(size * sizeof(int));
 
     int i = 0, j = 0, k = 0;
@@ -218,6 +220,7 @@ int merge_sorted(int arr_1[], int arr_2[], int len_1, int len_2)
             i++;
             j++;
             k++;
+            size--;
         }
     }
 
@@ -248,57 +251,44 @@ void Intersection(int arr_1[], int arr_2[], int len_1, int len_2)
     }
 }
 
-// int *Union(int arr_1[], int arr_2[], int len_1, int len_2)
-// {
-//     int size = len_1 + len_2, flag;
-//     printf("\n");
-//     ptr = (int *)malloc(size * sizeof(int));
-//     int k = 0;
-
-//     for (int i = 0; i < len_1; i++)
-//     {
-//         ptr[i] = arr_1[i];
-//         k++;
-//     }
-//     for (int i = 0; i < len_2; i++)
-//     {
-//         for (int j = 0; j < k; j++)
-//         {
-//             if (ptr[j] == arr_2[i])
-//             {
-//                 flag++;
-//             }
-//             else
-//             {
-//                 ptr[k] = arr_2[i];
-//                 k++;
-//             }
-//         }
-//     }
-// }
-
 int *Union(int arr_1[], int arr_2[], int len_1, int len_2)
 {
-    int size = len_1 + len_2, flag, k = 0, counter = 0;
+    int k = 0, i = 0, j = 0;
+    size = len_1 + len_2;
     printf("\n");
     ptr = (int *)malloc(size * sizeof(int));
 
-    for (int i = 0; i < len_1; i++)
+    while (i < len_1 && j < len_2)
     {
-        ptr[k] = arr_1[i];
-        k++;
-    }
-
-    for (int i = 0; i < len_2; i++)
-    {
-        for (int j = 0; j < k; j++)
+        if (arr_1[i] < arr_2[j])
         {
-            if (ptr[j] != arr_2[i])
-            {
-                ptr[k] = arr_2[i];
-                k++;
-            }
-        
+            ptr[k] = arr_1[i];
+            i++;
+            k++;
+        }
+        else if (arr_1[i] > arr_2[j])
+        {
+            ptr[k] = arr_2[j];
+            j++;
+            k++;
+        }
+        else if (arr_1[i] == arr_2[j])
+        {
+            ptr[k] = arr_1[i];
+            i++;
+            j++;
+            k++;
+            size--;
         }
     }
+    while (i < len_1)
+    {
+        ptr[k++] = arr_1[i++];
+    }
+    while (j < len_2)
+    {
+        ptr[k++] = arr_2[j++];
+    }
+
+    printf("\nValue of I is %d and j is %d \n\n", i, j);
 }
