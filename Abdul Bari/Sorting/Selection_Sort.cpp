@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-void Selection_Sort(int a[], int size) //.                      O( n^2 )
+void Insertion_Sort(int a[], int size) //.                      O( n^2 )
 {
     for (int i = 0; i < size; i++)
     {
@@ -30,7 +30,7 @@ int main()
     // int arr[] = {2, 5, 6, 7, 8};
     int size = sizeof(arr) / sizeof(int);
 
-    Selection_Sort(arr, size);
+    Insertion_Sort(arr, size);
 
     for (int i = 0; i < size; i++)
     {

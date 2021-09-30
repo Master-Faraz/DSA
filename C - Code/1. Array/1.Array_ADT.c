@@ -47,12 +47,16 @@ int main()
     int arr_2[] = {2, 3, 5, 8};
     // merge_sorted(arr_1, arr_2, 4, 4);
     // printing(merge_arr, 8);
-    Union(arr_1, arr_2, 4, 4);
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d\n", ptr[i]);
-    }
-    printf("Size is %d\n", size);
+    
+
+    // Union(arr_1, arr_2, 4, 4);
+    // for (int i = 0; i < size; i++)
+    // {
+    //     printf("%d\n", ptr[i]);
+    // }
+    // printf("Size is %d\n", size);
+
+
 }
 
 int get_index(int arr[], int key, int size)

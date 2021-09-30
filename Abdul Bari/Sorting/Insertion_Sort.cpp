@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-void Selection_Sort(int a[], int size) //.                      O( n )
+void Insertion_Sort(int a[], int size) //.                      O( n )
 {
     for (int i = 1; i < size; i++)
     {
@@ -21,11 +21,11 @@ void Selection_Sort(int a[], int size) //.                      O( n )
 
 int main()
 {
-    // int arr[] = {8,2,5,7,6};
-    int arr[] = {2,5,6,7,8};
+    int arr[] = {8,2,5,7,6};
+    // int arr[] = {2,5,6,7,8};
     int size = sizeof(arr) / sizeof(int);
 
-    Selection_Sort(arr , size);
+    Insertion_Sort(arr , size);
 
     for (int i = 0; i < size; i++)
     {
