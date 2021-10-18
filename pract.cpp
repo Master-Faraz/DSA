@@ -1,19 +1,9 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 int main()
 {
-    int x = 0, n, count = 0;
-    cout << "Enter a number : " << endl;
-    cin >> n;
-
-    while (n != 0)
-    {
-        if (n & 1 == 1)
-            count++;
-
-        n = (n >> 1);
-    }
-    cout << count << endl;
-
-    return 0;
+  cout<<__builtin_ctz(8)<<endl;
+  cout<<__builtin_clz(8)<<endl;
+  cout<<sizeof(int)<<endl;
+  return 0;
 }
