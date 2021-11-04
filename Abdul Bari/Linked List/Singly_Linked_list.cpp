@@ -21,9 +21,11 @@ int Search(Node *t, int n);
 
 void insert(Node *t, int key, int index);
 void insert_last(Node *t, int key);
-
 int delete_node(int index);
+
 int Check_Sort();
+void Selection_sort(Node *head);
+void Bubble_sort(Node *head);
 
 //**************************************************************************************************************
 
@@ -45,17 +47,19 @@ int main()
     // Search(first, 6);
 
     insert(first, 100, 0);
-    insert(first, 200, 1);
-    insert(first, 300, 2);
+    insert(first, 1300, 1);
+    insert(first, 4500, 2);
     insert(first, 400, 3);
 
-    insert_last(first, 69);
-    insert_last(first, 79);
+    insert_last(first, 169);
+    insert_last(first, 49);
 
     // delete_node(0);
     // Check_Sort();
 
-    // display(first);
+    Bubble_sort(first);
+
+    display(first);
 
     return 0;
 }
@@ -279,4 +283,47 @@ int Check_Sort()
     cout << "Linked list is sorted" << endl;
 
     return 1;
+}
+
+void Selection_sort(Node *head) //.           O( n^2 )
+{
+    Node *ptr, *iter;
+    ptr = head;
+
+    while (ptr->next != NULL)
+    {
+        iter = ptr->next;
+        while (iter != NULL)
+        {
+            if (ptr->data > iter->data)
+            {
+                int temp;
+                temp = ptr->data;
+                ptr->data = iter->data;
+                iter->data = temp;
+            }
+            else
+                iter = iter->next;
+        }
+        ptr = ptr->next;
+    }
+}
+
+void Bubble_sort(Node *head)
+{
+    Node *end, *p, *q;
+
+    for (end = NULL; end != head->next; end = p)
+    {
+        for (p = head; p->next != end; p = p->next)
+        {
+            q = p->next;
+            if (p->data > q->data)
+            {
+                int temp = p->data;
+                p->data = q->data;
+                q->data = temp;
+            }
+        }
+    }
 }
