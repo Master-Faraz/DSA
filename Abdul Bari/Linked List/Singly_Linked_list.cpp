@@ -18,6 +18,7 @@ int Max_Element(Node *t);
 int Min_Element(Node *t);
 int Sum_Element(Node *t);
 int Search(Node *t, int n);
+void Swap(int &a, int &b);
 
 void insert(Node *t, int key, int index);
 void insert_last(Node *t, int key);
@@ -26,6 +27,7 @@ int delete_node(int index);
 int Check_Sort();
 void Selection_sort(Node *head);
 void Bubble_sort(Node *head);
+void Insertion_sort(Node *head);
 
 //**************************************************************************************************************
 
@@ -47,8 +49,8 @@ int main()
     // Search(first, 6);
 
     insert(first, 100, 0);
-    insert(first, 1300, 1);
-    insert(first, 4500, 2);
+    insert(first, 130, 1);
+    insert(first, 45, 2);
     insert(first, 400, 3);
 
     insert_last(first, 169);
@@ -56,8 +58,9 @@ int main()
 
     // delete_node(0);
     // Check_Sort();
-
-    Bubble_sort(first);
+    
+    // Bubble_sort(first);
+    Insertion_sort(first);
 
     display(first);
 
@@ -173,6 +176,13 @@ int Search(Node *t, int key)
     }
     cout << "Key " << key << " is not present in linked list -_-" << endl;
     return -1;
+}
+
+void Swap(int &a, int &b)
+{
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
 }
 
 //**************************************************************************************************************
@@ -324,6 +334,22 @@ void Bubble_sort(Node *head)
                 p->data = q->data;
                 q->data = temp;
             }
+        }
+    }
+}
+
+void Insertion_sort(Node *head)
+{
+    Node *j, *i, *last;
+
+    for (i = head; i != NULL; i = i->next)
+    {
+        Node *temp;
+        temp->data = i->data;
+        temp->next = i->next;
+
+        for (j = first; j != i->next; j = j->next)
+        {
         }
     }
 }
