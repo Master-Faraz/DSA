@@ -93,7 +93,7 @@ int main()
     push(st, 20);
     push(st, 30);
     push(st, 40);
-    cout << "\n\nPopped element is " << pop(st) << endl;
+    // cout << "\n\nPopped element is " << pop(st) << endl;
     display(st);
     return 0;
 }
