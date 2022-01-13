@@ -4,7 +4,7 @@ using namespace std;
 struct Node
 {
     int data;
-    Node *left=NULL, *right=NULL;
+    Node *left = NULL, *right = NULL;
 };
 Node *t = new Node;
 
@@ -16,7 +16,7 @@ Node *Create()
 
     if (x == 0)
     {
-        return 0;
+        return NULL;
     }
 
     t->data = x;
@@ -25,17 +25,20 @@ Node *Create()
     cout << "Enter right child of " << x << endl;
     t->right = Create();
 
+
     return t;
 }
 
-void preorder(struct Node *t)
+void Inorder(Node *root) //.        Left - Node - Right
 {
-    if (t!=NULL)
-    {
-        cout << t->data << endl;
-        preorder(t->left);
-        preorder(t->right);
-    }
+    if (root == NULL)
+        return;
+
+    Inorder(root->left);
+    cout << root->data << "\t";
+    Inorder(root->right);
+    
+    return;
 }
 
 int main()
@@ -43,6 +46,8 @@ int main()
     Node *root;
     root = 0;
     root = Create();
-    preorder(t);
+
+    Inorder(t);
+
     return 0;
 }
