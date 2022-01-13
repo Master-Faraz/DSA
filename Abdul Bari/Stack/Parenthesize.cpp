@@ -7,8 +7,9 @@ void check(string s);
 
 int main()
 {
-    string s = "[{(a+b)}]";
+    string s = "[]){";
     check(s);
+
     return 0;
 }
 
@@ -25,17 +26,30 @@ void check(string s)
             top++;
         }
 
-        // // IF current current character is not opening
-        // // bracket, then it must be closing. So stack
-        // // cannot be empty at this point.
-        // else if (st.empty())
-        // {
-        //     cout << "Parenthesis not balacned -_-" << endl;
-        //     return;
-        // }
+        // IF current current character is not opening
+        // bracket, then it must be closing. So stack
+        // cannot be empty at this point.
+        else if (st.empty())
+        {
+            cout << "Parenthesis not balacned -_-" << endl;
+            return;
+        }
+        /*  Ascii code ->
+
+        "(" --> 40
+        ")" --> 41
+
+        "[" --> 91
+        "]" --> 93
+
+        "{" --> 123
+        "}" --> 125
+
+        */
         else if (s[i] == ')' || s[i] == '}' || s[i] == ']')
         {
-            if (top == 0)
+            char c = st.top();
+            if ((s[i] ==']' && c != '[')||(s[i] =='}' && c != '{')||(s[i] ==')' && c != '('))
             {
                 cout << "Parenthesis not balanced -_- " << endl;
                 return;
