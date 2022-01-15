@@ -3,65 +3,56 @@ using namespace std;
 
 struct Node
 {
-  int data;
-  Node *L_Child = NULL, *R_Child = NULL;
+    int data;
+    Node *left = NULL, *right = NULL;
 };
 
-Node *root = NULL;
-
-void Insert(int key)
+Node *Create()
 {
-  Node *r, *p = root; //            r  is tail Pointer
+    Node *p = new Node;
 
-  Node *t = new Node; //          Creating New node
-  t->data = key;
-  t->L_Child = t->R_Child = NULL;
+    int x;
+    cout << "Enter data : ";
+    cin >> x;
 
-  if (root == NULL) //          If no node is present
-  {
-    p = t;
-    return; //          To break go through next line
-  }
+    if (x == 0)
+    {
+        return NULL;
+    }
 
-  while (root)
-  {
-    r = p; //            Assigning tail pointer
+    p->data = x;
 
-    if (key == p->data) //           If key is already present
-      return;
+    cout << "Enter left for : " << x << endl;
+    p->left = Create();
 
-    else if (key > p->data) //            If key is greater than go to Right Side
-      p = p->R_Child;
+    cout << "Enter right for : " << x << endl;
+    p->left = Create();
 
-    else //            Else go to Left Side
-      p = p->L_Child;
-  }
-
-  if (r->data > key)
-    r->L_Child = t;
-
-  else
-    r->R_Child = t;
+    return p;
 }
 
-void Inorder(struct Node *root)
+void Inorder(Node *root) //.        Left - Node - Right
 {
-  if (root != NULL)
-  {
-    Inorder(root->L_Child);
-    cout << root->data << endl;
-    Inorder(root->R_Child);
-  }
+    if (root == NULL)
+        return;
+
+    Inorder(root->left);
+    cout << root->data << "\t";
+    Inorder(root->right);
+
+    return;
 }
 
 int main()
 {
-  Insert(50);
-  Insert(5);
-  Insert(10);
-  Insert(20);
-  Insert(25);
+    Node *root = NULL;
 
-  Inorder(root);
-  return 0;
+    root = Create();
+
+    cout<<"\n\n Inorder Traversal \n"<<endl;
+   // cout << "\n\n\n";
+
+    Inorder(root);
+
+    return 0;
 }

@@ -6,10 +6,11 @@ struct Node
     int data;
     Node *left = NULL, *right = NULL;
 };
-Node *t = new Node;
 
 Node *Create()
 {
+    Node *t = new Node;
+
     int x;
     cout << "Enter data of Node ( or Enter 0 for no node ) :  ";
     cin >> x;
@@ -20,11 +21,12 @@ Node *Create()
     }
 
     t->data = x;
+
     cout << "Enter left child of " << x << endl;
     t->left = Create();
+    
     cout << "Enter right child of " << x << endl;
     t->right = Create();
-
 
     return t;
 }
@@ -37,17 +39,19 @@ void Inorder(Node *root) //.        Left - Node - Right
     Inorder(root->left);
     cout << root->data << "\t";
     Inorder(root->right);
-    
+
     return;
 }
 
 int main()
 {
-    Node *root;
-    root = 0;
+    Node *root = NULL;
+
     root = Create();
 
-    Inorder(t);
+    cout<<"\n\n Inorder Traversal \n"<<endl;
+
+    Inorder(root);
 
     return 0;
 }
