@@ -3,30 +3,32 @@ using namespace std;
 
 struct Node
 {
-    Node *left, *right;
     int data;
+    Node *left = NULL, *right = NULL;
 };
 
-Node *create_tree()
+Node *Create()
 {
-    Node *root = new Node;
-    int data;
+    Node *t = new Node;
 
-    cout << "Enter data " << endl;
-    cin >> data;
+    int x;
+    cout << "Enter data : ";
+    cin >> x;
 
-    if (data == 0)
+    if (x == 0)
+    {
         return NULL;
+    }
 
-    root->data = data;
+    t->data = x;
 
-    cout << "Enter left for : " << data << endl;
-    root->left = create_tree();
+    cout << "Enter left for : " << x << endl;
+    t->left = Create();
 
-    cout << "Enter right for : " << data << endl;
-    root->left = create_tree();
+    cout << "Enter right for : " << x << endl;
+    t->right = Create();
 
-    return root;
+    return t;
 }
 
 void Inorder(Node *root) //.        Left - Node - Right
@@ -37,30 +39,49 @@ void Inorder(Node *root) //.        Left - Node - Right
     Inorder(root->left);
     cout << root->data << "\t";
     Inorder(root->right);
+
+    return;
 }
 
-void printInorder(struct Node *node)
+void Preorder(Node *root)
 {
-    if (node == NULL)
+    if (root == NULL)
         return;
 
-    /* first recur on left child */
-    printInorder(node->left);
+    cout << root->data << "\t";
+    Preorder(root->left);
+    Preorder(root->right);
+}
 
-    /* then print the data of node */
-    cout << node->data << " ";
+void Postorder(Node *root)
+{
+    if (root == NULL)
+        return;
 
-    /* now recur on right child */
-    printInorder(node->right);
+    Preorder(root->left);
+    Preorder(root->right);
+    cout << root->data << "\t";
+}
+
+int size(Node *root)
+{
+
 }
 
 int main()
 {
-    Node *root = create_tree();
-    cout << "\n\nvalues are : ->\n"
-         << endl;
+    Node *root = NULL;
 
+    root = Create();
+
+    // cout<<"\n\n Inorder Traversal \n"<<endl;
     // Inorder(root);
-    printInorder(root);
+    // cout << "\n\n Preorder Traversal \n"
+    //      << endl;
+    // Preorder(root);
+    cout << "\n\n Postorder Traversal \n"
+         << endl;
+    Postorder(root);
+
     return 0;
 }
