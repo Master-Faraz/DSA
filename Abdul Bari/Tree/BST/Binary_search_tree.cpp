@@ -105,6 +105,7 @@ Node *Recurssive_Insert(Node *p, int key) //.             For delete function
 
     return p;
 }
+
 int height(Node *root)
 {
     if (root == NULL)
